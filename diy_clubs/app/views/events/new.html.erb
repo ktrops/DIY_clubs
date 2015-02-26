@@ -1,0 +1,45 @@
+<h1>New Event</h1>
+<p>
+<%= form_for(@event, url: events_path) do |f| %>
+<%= f.label :name %><br>
+<%= f.text_area :name %><br>
+
+<%=f.label :date%><br>
+<%=f.date_select :event_date %><br>
+</p>
+
+<p>
+<%= f.fields_for @building do |b| %>
+<h2><%= b.label :building %></h2>
+<p>
+	<%= b.label :need, "need" %>
+	<%= b.radio_button :need, "need" %>
+	<%= b.label :need, "got it" %>
+	<%= b.radio_button :need, "got it"%></p>
+	<%= b.label :description%><br>
+	<%= b.text_area :description %><br>
+	<%= b.label :capacity %><br>
+	<%= b.text_area :capacity %><br>
+</p>
+<% end %>
+
+	<%= f.fields_for @music do |c| %>
+	<h2><%= c.label :music, "Music Type" %></h2>
+<p>
+	<%= c.label :type, "electronic" %>
+	<%= c.radio_button :type, "electronic" %>
+	<%= c.label :type, "acoustic" %>
+	<%= c.radio_button :type, "acoustic"  %>
+</p>
+
+
+
+<% end %>
+<%= f.submit "new event" %>
+<% end %>
+
+
+
+
+
+

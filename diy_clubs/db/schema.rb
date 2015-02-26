@@ -16,12 +16,22 @@ ActiveRecord::Schema.define(version: 20150211041122) do
   create_table "buildings", force: :cascade do |t|
     t.string  "description"
     t.integer "capacity"
+    t.boolean "need"
+    t.integer "event_id"
   end
+
+  add_index "buildings", ["event_id"], name: "index_buildings_on_event_id"
 
   create_table "events", force: :cascade do |t|
     t.string  "name"
     t.string  "location"
+    t.date    "event_date"
     t.integer "building_id"
+  end
+
+  create_table "events_musics", force: :cascade do |t|
+    t.integer "music_id_id"
+    t.integer "event_id_id"
   end
 
   create_table "musics", force: :cascade do |t|
@@ -30,11 +40,6 @@ ActiveRecord::Schema.define(version: 20150211041122) do
     t.integer "voltage_usage"
     t.string  "details"
     t.integer "powersource_id"
-  end
-
-  create_table "musics_and_events", force: :cascade do |t|
-    t.integer "music_id_id"
-    t.integer "event_id_id"
   end
 
   create_table "powersource", force: :cascade do |t|

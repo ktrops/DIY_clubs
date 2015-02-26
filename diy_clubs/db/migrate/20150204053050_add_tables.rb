@@ -3,6 +3,7 @@ class AddTables  < ActiveRecord::Migration
     create_table :events do |t|
       t.string :name
       t.string :location
+      t.date :event_date
     end
     
     create_table :powersource do |t|
@@ -12,7 +13,8 @@ class AddTables  < ActiveRecord::Migration
     
     create_table :buildings do |t|
       t.string :description
-      t.integer :capacity 
+      t.integer :capacity
+      t.boolean :need 
     end
 
     create_table :musics do |t|
