@@ -9,13 +9,13 @@
 </p>
 
 <p>
-<%= f.fields_for @building do |b| %>
+<%= f.fields_for :building do |b| %>
 <h2><%= b.label :building %></h2>
 <p>
-	<%= b.label :need, "need" %>
-	<%= b.radio_button :need, "need" %>
-	<%= b.label :need, "got it" %>
-	<%= b.radio_button :need, "got it"%></p>
+	<%= b.label :need, "need", :value => true %>
+	<%= b.radio_button :need, true %>
+	<%= b.label :need, "got it", :value => false %>
+	<%= b.radio_button :need, false %></p>
 	<%= b.label :description%><br>
 	<%= b.text_area :description %><br>
 	<%= b.label :capacity %><br>
