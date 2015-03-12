@@ -5,7 +5,7 @@
 	<p><h3>Is the Building still needed?</h3> 
 	<% if @building.need == true%>
 		<%= "Yes"%>
-		<%= form_for @event, html: {method: "patch"} do |f|%>
+		<%= form_for @event.building, html: {method: "patch"} do |f|%>
 			<%= f.fields_for :bulding do |b|%>
 			<%= b.label :need, "Can you provide a building? Yes:", :value => false %>
 			<%= b.radio_button :need, false%>
