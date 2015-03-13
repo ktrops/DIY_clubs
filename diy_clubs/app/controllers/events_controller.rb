@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 	def update
 		@event = Event.find(params[:id])
 		@building = @event.building
-		@event.building.update(description: event_params[:building_attributes][:description], need: event_params[:building_attributes][:need])
+		@event.building.update(building_params)
 		if @event.save
 			render :edit
 		else 
@@ -42,6 +42,10 @@ class EventsController < ApplicationController
 	end
 
 	def edit
+	end
+
+	def building_params
+		params.require(:building).permit(:capacity, :description, :need)
 	end
 
 	def event_params
