@@ -1,4 +1,4 @@
-<h1>New Event</h1>
+ <h3><%= link_to "Go to Event list", events_path %></h3> <p>or</p><h3>Create a New Event</h3> 
 <p>
 <%= form_for(@event, url: events_path) do |f| %>
 <%= f.label :name %><br>
@@ -23,20 +23,10 @@
 </p>
 <% end %>
 
-	<%= f.fields_for @music do |c| %>
-	<h2><%= c.label :music, "Music Type" %></h2>
-<p>
-	<%= c.label :type, "electronic" %>
-	<%= c.radio_button :type, "electronic" %>
-	<%= c.label :type, "acoustic" %>
-	<%= c.radio_button :type, "acoustic"  %>
-</p>
-
-
-
+<%= f.submit "new event" %><br>
 <% end %>
-<%= f.submit "new event" %>
-<% end %>
+
+
 
 
 

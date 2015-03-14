@@ -3,16 +3,18 @@
 	<p><h3>Building Capacity</h3> <%= @building.capacity%></p>
 	<p><h3>Is the Building still needed?</h3> 
 	<% if @building.need == true%>
-		<%= "Yes"%>
-		<%= form_for @event.building, url: event_url, html: {method: "patch"} do |f|%>
+		<%= "Yes"%><br>
+		<p><%= form_for @event.building, url: event_url, html: {method: "patch"} do |f|%>
 			<%= f.label :need, "Can you provide a building? Yes:", :value => false %>
 			<%= f.radio_button :need, false%>
 			<p><h3>Building Description</h3>
 			<%= f.label :description, "If yes, please describe the building." %>
 			<%= f.text_area :description %>
+			<%= f.label :capacity %>
+			<%= f.text_area :capacity %>
 			<%= f.submit "submit"%>
 		<% end %>
 	<% else%>
 	<%=   "No" %>
-	<% end %>
+	<% end %></p>
 

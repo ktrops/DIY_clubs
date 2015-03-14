@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 	def new
 		@event = Event.new
-
+		@music = Music.new
 		@event.build_building
 		@music = @event.musics.build
 
@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 		@building = @event.building
 		@event.building.update(building_params)
 		if @event.save
-			render :edit
+			redirect_to events_path
 		else 
 			render :show 
 	
@@ -42,6 +42,8 @@ class EventsController < ApplicationController
 	end
 
 	def edit
+		@event = Event.find(params[:id])
+		@music = @event.musics
 	end
 
 	def building_params
@@ -51,7 +53,8 @@ class EventsController < ApplicationController
 	def event_params
 		
 		 params.require(:event).permit(:name, :location, :event_date,
-									   building_attributes: [:capacity, :description, :need, :id]) 
+									   building_attributes: [:capacity, :description, :need, :id],
+									   music_attributes: [:type, :id, :_type, :name])
 	end
 
 
